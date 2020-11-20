@@ -1,0 +1,24 @@
+---
+title: My first post
+author: Orman Hall
+date: '2020-11-20'
+slug: my-first-post
+categories:
+  - R
+tags:
+  - plot
+---
+
+```{r,echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+# Heroin
+Heroin has been available in limited quantities throughout Ohio for decades. Up until the early years of the 21st century demand was constrained due to widespread perception of harm and prohibitive cost. The introduction of less expensive and highly potent black tar heroin from the Xalisco region of Mexico along with growing demand attributable to the prescription opioid epidemic, resulted in a dramatic increase in heroin trafficking. 
+
+The following figure shows heroin trafficking in Southeast Ohio rising steadily from the beginning of the study period through 2016, followed by a steep decline in seizures through the remainder of the reporting period. Overall declines in heroin seizures are widely attributed to the introduction of illicit fentanyl and fentanyl analogs throughout the region. 
+
+```{r echo=FALSE, dpi=300, fig.align='center', message=FALSE,fig.height=6, fig.width=8,fig.align='center',out.width="80%"}
+BCITEMP<-read_csv("d:/geeksquadbackup/eadie/BCITEMP.csv")
+ggplot(BCITEMP, aes(x=MDATE, y=HEROINR)) +geom_area(fill="#6883bc", alpha=0.5) +     geom_line(color="#8a307f",size=0.2) + geom_smooth(color="#8a307f",span=0.3, se=FALSE,size=0.5) + labs(title = "Heroin Seizures - per 100,000 Pop.",subtitle = "For Southeast Ohio, 2010 - 2019", caption = "Source: Bureau of Criminal Investigation", y="Seizures", x=" ", color=NULL,hjust=0)+theme_minimal()+theme(axis.title.y=element_text(hjust=0.9,size=10,colour="gray50"))
+```
